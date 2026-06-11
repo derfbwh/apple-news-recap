@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All the Best Cannolis</title>
+    <style>
+        :root {
+            --primary-color: #d4af37;
+            --bg-color: #fcf8f2;
+            --text-color: #333;
+            --sidebar-bg: #fff;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+        aside {
+            width: 250px;
+            background-color: var(--sidebar-bg);
+            padding: 5rem 1rem 1rem 1rem;
+            position: fixed;
+            height: 100vh;
+            box-shadow: var(--shadow);
+        }
+        aside a {
+            display: block;
+            padding: 0.5rem;
+            color: var(--text-color);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            border-radius: 4px;
+        }
+        aside a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        main {
+            margin-left: 270px;
+            padding: 6rem 2rem 2rem 2rem;
+            max-width: 800px;
+        }
+        section {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        h2 {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>All the Best Cannolis</h1>
+    </header>
+    <aside>
+        <nav>
+            <a href="#history">History</a>
+            <a href="#classic">Classic Sicilian</a>
+            <a href="#palermo">Palermo-Style</a>
+            <a href="#catania">Catanese</a>
+            <a href="#american">American Evolution</a>
+            <a href="#chocolate">Chocolate Dipped</a>
+            <a href="#pistachio">Pistachio</a>
+            <a href="#modern">Modern Twists</a>
+        </nav>
+    </aside>
+    <main>
+        <section id="history">
+            <h2>The History of Cannoli</h2>
+            <p>The origins of the cannoli trace back over a thousand years to the Arab rule of Sicily (9th–11th century). The Arabs introduced sugarcane, almonds, and citrus to the region, laying the foundation for many of Sicily’s famed pastries. Originally prepared as a treat during the Carnival season, these "little tubes" (from the Italian word <em>canna</em>) eventually became a year-round staple.</p>
+        </section>
+        <section id="classic">
+            <h2>Classic Sicilian</h2>
+            <p>The traditional cannoli filled with sweet ricotta, a touch of cinnamon, and sometimes studded with candied orange peel or dark chocolate chips.</p>
+        </section>
+        <section id="palermo">
+            <h2>Palermo-Style</h2>
+            <p>Considered by many as the standard, the Palermo-style cannoli features a lighter ricotta filling, often mixed with Marsala wine and decorated with candied orange zest, adding a bright, citrusy sweetness to the rich cream.</p>
+        </section>
+        <section id="catania">
+            <h2>Catanese</h2>
+            <p>Hailing from Catania, this variation favors a richer, denser ricotta blend. The ends are traditionally dipped in vibrant, crushed local pistachios, offering a distinctive nutty flavor and a perfect textural contrast to the smooth filling.</p>
+        </section>
+        <section id="american">
+            <h2>The American Evolution</h2>
+            <p>As Sicilians immigrated to the United States, the cannoli evolved. American bakeries often use cow's milk ricotta instead of traditional sheep's milk, resulting in a slightly sweeter, sturdier filling. This style frequently incorporates mini chocolate chips directly into the cream and features a thicker, crunchier shell.</p>
+        </section>
+        <section id="chocolate">
+            <h2>Chocolate Dipped</h2>
+            <p>For the chocolate lovers, this version features a shell dipped in rich dark chocolate before being filled with the classic ricotta cream.</p>
+        </section>
+        <section id="pistachio">
+            <h2>Pistachio</h2>
+            <p>A nutty delight where the ends of the cannoli are dipped in crushed, vibrant green pistachios, adding a perfect crunch.</p>
+        </section>
+        <section id="modern">
+            <h2>Modern Twists</h2>
+            <p>From espresso-infused ricotta to shells made of unique flavors like red velvet, the modern cannoli scene is full of surprises.</p>
+        </section>
+        
+            <section id="boston">
+        <h2>Boston Cannolis</h2>
+        <p>Boston's North End is famous for its legendary cannoli rivalry. Here are three highly rated spots to grab one:</p>
+        <ul>
+            <li><a href="https://www.yelp.com/biz/mikes-pastry-boston" target="_blank">Mike's Pastry</a> - Known for their iconic blue and white boxes and a massive variety of flavors.</li>
+            <li><a href="https://www.yelp.com/biz/modern-pastry-shop-boston" target="_blank">Modern Pastry Shop</a> - Famous for filling their cannolis to order, ensuring the perfect crunch.</li>
+            <li><a href="https://www.yelp.com/biz/bovas-bakery-boston" target="_blank">Bova's Bakery</a> - A 24/7 institution offering incredible traditional Sicilian cannolis.</li>
+        </ul>
+    </section>
+    </main>
+</body>
+</html>
