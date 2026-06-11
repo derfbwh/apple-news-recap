@@ -1,0 +1,118 @@
+import os
+import re
+import json
+from datetime import datetime
+import email.utils
+import markdown
+
+def slugify(text):
+    text = text.lower()
+    text = re.sub(r'[^\w\s-]', '', text)
+    text = re.sub(r'[\s_-]+', '-', text)
+    text = re.sub(r'^-+|-+$', '', text)
+    return text
+
+def update_site():
+    base_url = "https://derfbwh.github.io/apple-news-recap/"
+    html_files = [f for f in os.listdir('.') if f.endswith('.html') and f not in ['index.html', 'cannolis.html']]
+    html_files.sort(reverse=True)
+
+    posts = []
+    for filename in html_files:
+        with open(filename, 'r') as f:
+            content = f.read()
+            title_match = re.search(r'<title>(.*?)</title>', content)
+            title = title_match.group(1).replace(" - This Week in Apple", "") if title_match else filename
+            
+            # Extract date from filename (YYYY-MM-DD-...)
+            date_match = re.match(r'(\d{4}-\d{2}-\d{2})', filename)
+            date_str = date_match.group(1) if date_match else datetime.fromtimestamp(os.path.getmtime(filename)).strftime('%Y-%m-%d')
+            
+            # Extract a brief description for RSS
+            desc_match = re.search(r'<article>(.*?)</article>', content, re.DOTALL)
+            description = desc_match.group(1)[:500] + "..." if desc_match else ""
+            
+            posts.append({
+                'title': title,
+                'filename': filename,
+                'date': date_str,
+                'description': description
+            })
+
+    # Update index.html
+    items_html = ""
+    for post in posts:
+        items_html += f'<li><span class="date">{post["date"]}</span> - <a href="{post["filename"]}">{post["title"]}</a></li>\n'
+    
+    index_template = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This Week in Apple - Archive</title>
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for This Week in Apple" href="feed.xml" />
+    <style>
+        body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 2rem; background-color: #f9f9f9; }}
+        header {{ border-bottom: 2px solid #333; margin-bottom: 2.5rem; padding-bottom: 1rem; }}
+        h1 {{ margin: 0; font-size: 2.5rem; }}
+        .description {{ font-size: 1.1rem; color: #555; font-style: italic; }}
+        ul {{ list-style: none; padding: 0; }}
+        li {{ margin-bottom: 1.2rem; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); display: flex; align-items: center; }}
+        .date {{ font-weight: 600; color: #888; margin-right: 1.5rem; min-width: 100px; font-variant-numeric: tabular-nums; }}
+        a {{ color: #007aff; text-decoration: none; font-size: 1.2rem; font-weight: 500; }}
+        a:hover {{ text-decoration: underline; }}
+        footer {{ margin-top: 3rem; text-align: center; font-size: 0.9rem; color: #666; }}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>This Week in Apple</h1>
+        <p class="description">A weekly recap of everything Apple, in the spirit of Daring Fireball. <a href="feed.xml">RSS Feed</a></p>
+    </header>
+    <main>
+        <ul>
+            {items_html}
+        </ul>
+    </main>
+    <footer>
+        <p>&copy; 2026 This Week in Apple</p>
+    </footer>
+</body>
+</html>"""
+    
+    with open('index.html', 'w') as f:
+        f.write(index_template)
+
+    # Update feed.xml
+    rss_items = ""
+    for post in posts:
+        link = f"{base_url}{post['filename']}"
+        dt = datetime.strptime(post['date'], "%Y-%m-%d")
+        pub_date = email.utils.formatdate(dt.timestamp(), localtime=False)
+        rss_items += f"""
+        <item>
+            <title>{post['title']}</title>
+            <link>{link}</link>
+            <guid isPermaLink="true">{link}</guid>
+            <pubDate>{pub_date}</pubDate>
+            <description><![CDATA[{post['description']}]]></description>
+        </item>"""
+
+    rss_content = f"""<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+    <title>This Week in Apple</title>
+    <link>{base_url}</link>
+    <description>A weekly recap of everything Apple, in the spirit of Daring Fireball.</description>
+    <language>en-us</language>
+    <lastBuildDate>{email.utils.formatdate(datetime.now().timestamp(), localtime=False)}</lastBuildDate>
+    <atom:link href="{base_url}feed.xml" rel="self" type="application/rss+xml" />
+    {rss_items}
+</channel>
+</rss>"""
+
+    with open('feed.xml', 'w') as f:
+        f.write(rss_content)
+
+if __name__ == "__main__":
+    update_site()
