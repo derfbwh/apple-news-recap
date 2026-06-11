@@ -21,23 +21,34 @@
         }
         h1 {
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
+            line-height: 1.2;
         }
         .date {
             color: #666;
             font-style: italic;
+            margin-top: 0.5rem;
         }
         article {
             background: white;
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        article h1, article h2, article h3 {
+            color: #111;
+            margin-top: 2rem;
+        }
+        article p {
+            margin-bottom: 1.2rem;
         }
         footer {
-            margin-top: 2rem;
+            margin-top: 3rem;
             text-align: center;
             font-size: 0.9rem;
             color: #666;
+            border-top: 1px solid #ddd;
+            padding-top: 1.5rem;
         }
         a {
             color: #007aff;
@@ -49,15 +60,24 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 1rem 0;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
         }
         th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
+            border: 1px solid #eee;
+            padding: 12px;
             text-align: left;
         }
         th {
-            background-color: #f2f2f2;
+            background-color: #f8f8f8;
+            font-weight: 600;
+        }
+        blockquote {
+            border-left: 4px solid #007aff;
+            margin: 1.5rem 0;
+            padding-left: 1rem;
+            color: #555;
+            font-style: italic;
         }
     </style>
 </head>
@@ -67,21 +87,61 @@
         <p class="date">2026-05-29</p>
     </header>
     <article>
-        I've completed this week's comprehensive blog post covering Apple news from May 23–29, 2026. The post centers on the anticipation building toward WWDC 2026 (June 8–12), which is just one week away.
-
-Key stories covered:
-
-iOS 27 Camera & Photos AI Features — Bloomberg obtained detailed images of iOS 27's new Camera Siri mode, Photo Reframe/Extend tools, and natural language photo editing, offering the first concrete look at Apple Intelligence's creative applications.
-
-Five New Products Ready for Launch — 9to5Mac reports that M5 Mac Studio, Mac mini, new Apple TV 4K, HomePod 3, and HomePod mini 2 could potentially launch at WWDC, breaking Apple's tradition of software-only announcements.
-
-Detroit Apple Developer Academy's Fifth Commencement — Apple announced that the academy has trained over 1,800 developers since 2021, demonstrating the company's commitment to tech workforce development in underserved communities.
-
-All-Black Apple Vision Pro Leak — Images of unreleased all-black Vision Pro components suggest Apple is exploring color variants and potential design refinements using titanium.
-
-iOS 27 Shortcuts Natural Language Overhaul — The Shortcuts app will support natural language automation, allowing users to describe workflows instead of building them step-by-step.
-
-The post is written in a sharp, analytical editorial voice with primary sources from Apple Newsroom, MacRumors, and 9to5Mac, and includes a full references section with Markdown citations. It's ready for publication.
+        <h1>This Week in Apple: The Calm Before WWDC—And What's Coming</h1>
+<p><strong>May 29, 2026</strong></p>
+<p>One week remains before WWDC 2026, and Apple has entered the quiet phase of its product cycle. The company has released no major announcements this week, but the silence is deafening. Behind the scenes, supply chain reports and developer leaks paint a picture of an unusually ambitious hardware roadmap—one that suggests Apple is preparing to announce not just software, but potentially several new products as early as next week. Meanwhile, the company continues its work in developer education, marking the fifth commencement of its Detroit academy, which has trained over 1,800 developers since 2021. The week's real story is what we know is coming: iOS 27 with a redesigned Siri, sweeping AI enhancements to the Camera and Photos apps, and the possibility of new Macs, home products, and accessories arriving sooner than expected.</p>
+<h2>This Week's Stories</h2>
+<table>
+<thead>
+<tr>
+<th>Story</th>
+<th>What Happened</th>
+<th>Why It Matters</th>
+<th>Primary Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iOS 27 Camera &amp; Photos AI Features Revealed</td>
+<td>Bloomberg obtained images of iOS 27's new Camera Siri mode, Photo Reframe/Extend tools, and natural language photo editing capabilities.</td>
+<td>Offers the first concrete look at Apple Intelligence's creative applications, signaling a major shift toward AI-powered content creation.</td>
+<td>[MacRumors]</td>
+</tr>
+<tr>
+<td>Five New Products Could Launch at WWDC</td>
+<td>9to5Mac reports that M5 Mac Studio, Mac mini, new Apple TV 4K, HomePod 3, and HomePod mini 2 are ready to launch, with WWDC as a possible venue.</td>
+<td>Suggests Apple may break from tradition and announce hardware alongside software at WWDC, reshaping expectations for the event.</td>
+<td>[9to5Mac]</td>
+</tr>
+<tr>
+<td>Detroit Apple Developer Academy Marks Fifth Commencement</td>
+<td>Apple announced that the Detroit academy has trained over 1,800 developers since 2021, with 200 graduates this year.</td>
+<td>Demonstrates Apple's commitment to developer education and tech workforce development in underserved communities.</td>
+<td>[Apple Newsroom]</td>
+</tr>
+<tr>
+<td>All-Black Apple Vision Pro Parts Leak</td>
+<td>Images of unreleased all-black Vision Pro components suggest Apple is exploring color variants and potential design refinements.</td>
+<td>Indicates continued investment in the Vision Pro platform despite rumors of a pivot.</td>
+<td>[MacRumors]</td>
+</tr>
+<tr>
+<td>iOS 27 Shortcuts Natural Language Overhaul</td>
+<td>The Shortcuts app will reportedly support natural language automation, allowing users to describe workflows instead of building them manually.</td>
+<td>Makes complex automation accessible to a much wider audience, leveraging the new Siri capabilities.</td>
+<td>[9to5Mac]</td>
+</tr>
+</tbody>
+</table>
+<h2>The AI Camera Revolution</h2>
+<p>The most exciting leak of the week involves the Camera app in iOS 27. The ability to use natural language to edit photos and reframe shots [1] is a glimpse into a future where the distinction between 'taking' a photo and 'creating' one becomes increasingly blurred.</p>
+<h2>The Hardware Wildcard</h2>
+<p>While WWDC is usually about software, the sheer number of 'ready-to-ship' products [2] suggests that Tim Cook might have a few hardware surprises up his sleeve this year. An M5 Mac Studio would be a welcome addition for professional users who have been waiting for a significant performance bump.</p>
+<h2>What to Watch Next Week</h2>
+<ul>
+<li><strong>Pre-WWDC Rumors:</strong> The final 48 hours before the keynote usually bring the most accurate leaks.</li>
+<li><strong>WWDC Invitations:</strong> Watch for any clues hidden in the event branding or invite graphics.</li>
+</ul>
     </article>
     <footer>
         <p><a href="index.html">← Back to Archive</a></p>

@@ -21,23 +21,34 @@
         }
         h1 {
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
+            line-height: 1.2;
         }
         .date {
             color: #666;
             font-style: italic;
+            margin-top: 0.5rem;
         }
         article {
             background: white;
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        article h1, article h2, article h3 {
+            color: #111;
+            margin-top: 2rem;
+        }
+        article p {
+            margin-bottom: 1.2rem;
         }
         footer {
-            margin-top: 2rem;
+            margin-top: 3rem;
             text-align: center;
             font-size: 0.9rem;
             color: #666;
+            border-top: 1px solid #ddd;
+            padding-top: 1.5rem;
         }
         a {
             color: #007aff;
@@ -49,15 +60,24 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 1rem 0;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
         }
         th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
+            border: 1px solid #eee;
+            padding: 12px;
             text-align: left;
         }
         th {
-            background-color: #f2f2f2;
+            background-color: #f8f8f8;
+            font-weight: 600;
+        }
+        blockquote {
+            border-left: 4px solid #007aff;
+            margin: 1.5rem 0;
+            padding-left: 1rem;
+            color: #555;
+            font-style: italic;
         }
     </style>
 </head>
@@ -67,23 +87,62 @@
         <p class="date">2026-06-05</p>
     </header>
     <article>
-        I've completed this week's comprehensive blog post covering Apple news from May 30 – June 5, 2026. The post focuses on the anticipation building toward WWDC 2026, which kicks off on Monday, June 8.
-
-Key stories covered:
-
-WWDC Hardware Speculation — MacRumors clarifies that new Apple TV 4K and HomePod mini are ready but unlikely to launch at WWDC due to Siri delays, while M5 Macs remain uncertain.
-
-iPhone Ultra Foldable Rumors Intensify — Reports suggest the iPhone Ultra will feature technology innovations spanning 15 years, with potential titanium construction and significant engineering achievements.
-
-Siri Server Infrastructure Updates — Apple is using Nvidia chips to power Gemini-powered Siri servers, revealing the significant computational requirements behind the AI-powered assistant redesign.
-
-iOS 27 Siri Features May Require Waitlist — New Siri features might be limited at launch and require users to join a waitlist, suggesting Apple is managing expectations and rollout capacity.
-
-John Ternus Scales Back Vision Roadmap — Apple's new CEO has reduced the company's spatial computing ambitions following disappointing Vision Pro sales, signaling a strategic pivot.
-
-Apple Card Interest Rate Cuts — Apple reduced interest rates on Apple Card Savings accounts, continuing its competitive positioning in fintech.
-
-The post is written in a sharp, analytical editorial voice with primary sources from MacRumors, 9to5Mac, and Apple World Today, and includes a full references section with Markdown citations. It's ready for publication and includes a "What to Watch Next Week" section focused on the WWDC keynote and announcements.
+        <h1>This Week in Apple: The Final Countdown to WWDC—What We Know and What We're Guessing</h1>
+<p><strong>June 5, 2026</strong></p>
+<p>WWDC 2026 arrives in just three days, and the anticipation is palpable. Apple has entered the final stretch before its annual developers conference, and the company is maintaining its characteristic silence on what will be announced. However, the rumor mill has been working overtime, and a clearer picture of what's coming has emerged. The consensus is that WWDC will be primarily a software event, with iOS 27, macOS 27, iPadOS 27, and watchOS 27 taking center stage. But there are hints—some stronger than others—that Apple might break tradition and announce new hardware. Meanwhile, the company has been quietly making changes to its existing products and services, including adjustments to Apple Card interest rates and continued expansion of its sports offerings. As the week winds down, all eyes are on Monday's keynote.</p>
+<h2>This Week's Stories</h2>
+<table>
+<thead>
+<tr>
+<th>Story</th>
+<th>What Happened</th>
+<th>Why It Matters</th>
+<th>Primary Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WWDC 2026 Hardware Speculation</td>
+<td>MacRumors reports that new Apple TV 4K and HomePod mini are "ready to go" but unlikely to launch at WWDC due to Siri delays.</td>
+<td>Clarifies expectations for the event and explains why certain products remain unreleased despite being ready.</td>
+<td>[MacRumors]</td>
+</tr>
+<tr>
+<td>iPhone Ultra Foldable Rumors Intensify</td>
+<td>Reports suggest the iPhone Ultra will feature technology innovations spanning 15 years, with potential titanium construction.</td>
+<td>Indicates Apple's foldable strategy is more advanced than previously understood, with significant R&amp;D investment.</td>
+<td>[9to5Mac Daily]</td>
+</tr>
+<tr>
+<td>Siri Server Infrastructure Updates</td>
+<td>Apple is reportedly using Nvidia chips to power Gemini-powered Siri servers, suggesting significant computational requirements.</td>
+<td>Reveals the infrastructure investment behind Apple's AI-powered assistant redesign.</td>
+<td>[9to5Mac Daily]</td>
+</tr>
+<tr>
+<td>iOS 27 Siri Features May Require Waitlist</td>
+<td>Reports indicate that new Siri features in iOS 27 might be limited at launch and require users to join a waitlist.</td>
+<td>Suggests Apple is managing expectations and server capacity for its new AI features.</td>
+<td>[9to5Mac Daily]</td>
+</tr>
+<tr>
+<td>App Store Ecosystem Reaches $1.4 Trillion</td>
+<td>Apple announced that the App Store ecosystem facilitated $1.4 trillion in billings and sales in 2025.</td>
+<td>Demonstrates the massive economic impact of the App Store and its continued growth.</td>
+<td>[Apple Newsroom]</td>
+</tr>
+</tbody>
+</table>
+<h2>The Software-First WWDC</h2>
+<p>While we always hope for a "One More Thing" hardware announcement, the evidence this week suggests that WWDC 2026 will be a software-first affair [1]. The delay of the new Apple TV and HomePod mini until the fall suggests that Apple wants the focus to remain squarely on its new AI-powered operating systems.</p>
+<h2>The Infrastructure of Intelligence</h2>
+<p>Behind the scenes, Apple is building a massive server infrastructure to support the new Siri. The use of Nvidia chips in these servers [2] marks a departure from Apple's usual reliance on its own silicon for everything, highlighting the sheer scale of the computational challenge ahead.</p>
+<h2>What to Watch Next Week</h2>
+<ul>
+<li><strong>WWDC Keynote:</strong> Monday, June 8 at 10:00 AM PT. This is the big one.</li>
+<li><strong>Platforms State of the Union:</strong> More technical details on the new APIs and developer tools.</li>
+<li><strong>Apple Design Awards:</strong> Celebrating the best apps and games on the platform.</li>
+</ul>
     </article>
     <footer>
         <p><a href="index.html">← Back to Archive</a></p>
