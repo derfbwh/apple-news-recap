@@ -1,80 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>This Week in Apple — Archive</title>
-  <meta name="description" content="A weekly recap of everything Apple, with a whimsical, colorful editorial archive.">
-  <link rel="alternate" type="application/rss+xml" title="RSS Feed for This Week in Apple" href="feed.xml">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This Week in Apple</title>
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for This Week in Apple" href="feed.xml" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: "Iowan Old Style", "Palatino Linotype", "Palatino", Georgia, "Times New Roman", serif;
+            line-height: 1.7;
+            color: #2c2c2c;
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem;
+            background: #fcf8f0;
+        }
+
+        .rainbow-bar {
+            height: 6px;
+            border-radius: 3px;
+            background: linear-gradient(90deg,
+                #e74c3c, #e67e22, #f1c40f, #2ecc71, #3498db, #9b59b6, #e74c3c);
+            background-size: 200% 100%;
+            margin-bottom: 2.5rem;
+            animation: shimmer 6s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        header {
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #e74c3c, #e67e22, #f1c40f, #2ecc71, #3498db, #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.15rem;
+            color: #888;
+            font-style: italic;
+            border-left: 3px solid #e6ddd0;
+            padding-left: 1rem;
+        }
+
+        .tagline a {
+            color: #888;
+            -webkit-text-fill-color: #888;
+            text-decoration: underline;
+            text-decoration-color: #ddd;
+            text-underline-offset: 3px;
+        }
+
+        .tagline a:hover {
+            color: #555;
+            text-decoration-color: #999;
+        }
+
+        .count {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #bbb;
+            margin-bottom: 1.5rem;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: white;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.03);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: baseline;
+            gap: 1.25rem;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        li:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .date {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #bbb;
+            min-width: 88px;
+            flex-shrink: 0;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: 0.02em;
+        }
+
+        a {
+            color: #2c2c2c;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 400;
+            transition: color 0.15s ease;
+        }
+
+        li:hover a {
+            color: #e67e22;
+        }
+
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee7dd;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #ccc;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 1.5rem 1rem; }
+            h1 { font-size: 2rem; }
+            li { flex-direction: column; gap: 0.25rem; padding: 1rem 1.25rem; }
+            .date { min-width: auto; font-size: 0.8rem; }
+            a { font-size: 1rem; }
+        }
+    </style>
 </head>
 <body>
-  <div class="site-shell">
-    <header class="masthead">
-      <p class="eyebrow">Independent-ish Apple dispatch</p>
-      <h1>This Week in <span class="gradient-word">Apple</span></h1>
-      <p class="description">A bright, opinionated archive of weekly Apple news recaps — now with more color, more personality, and an RSS feed for the old-school readers among us.</p>
-      <nav class="nav-pills" aria-label="Site links">
-        <a class="pill" href="feed.xml">RSS Feed</a>
-        <a class="pill" href="https://github.com/derfbwh/apple-news-recap">GitHub Repository</a>
-      </nav>
+    <div class="rainbow-bar"></div>
+    <header>
+        <h1>This Week in Apple</h1>
+        <p class="tagline">A weekly digest of Apple happenings &mdash; AI-generated, human-curated. <a href="feed.xml">RSS</a></p>
     </header>
-    <main aria-label="Newsletter archive">
-      <ul class="archive-grid">
-        <li class="issue-card">
-  <div class="issue-date"><strong>12</strong><span>Jun 2026</span></div>
-  <div>
-    <a href="2026-06-12-this-week-in-apple-the-developer-experience-gets-an-ai-overhaul-xcode-27-new-frameworks-and-the-future-of-app-development.html">This Week in Apple: The Developer Experience Gets an AI Overhaul—Xcode 27, New Frameworks, and the Future of App Development</a>
-    <div class="issue-meta">A weekly Apple recap with color, context, and just enough opinion.</div>
-  </div>
-</li>
-<li class="issue-card">
-  <div class="issue-date"><strong>11</strong><span>Jun 2026</span></div>
-  <div>
-    <a href="2026-06-11-this-week-in-apple-the-post-wwdc-intelligence-era.html">This Week in Apple: The Post-WWDC Intelligence Era</a>
-    <div class="issue-meta">A weekly Apple recap with color, context, and just enough opinion.</div>
-  </div>
-</li>
-<li class="issue-card">
-  <div class="issue-date"><strong>5</strong><span>Jun 2026</span></div>
-  <div>
-    <a href="2026-06-05-this-week-in-apple-the-final-countdown-to-wwdcwhat-we-know-and-what-were-guessing.html">This Week in Apple: The Final Countdown to WWDC—What We Know and What We're Guessing</a>
-    <div class="issue-meta">A weekly Apple recap with color, context, and just enough opinion.</div>
-  </div>
-</li>
-<li class="issue-card">
-  <div class="issue-date"><strong>29</strong><span>May 2026</span></div>
-  <div>
-    <a href="2026-05-29-this-week-in-apple-the-calm-before-wwdcand-whats-coming.html">This Week in Apple: The Calm Before WWDC—And What's Coming</a>
-    <div class="issue-meta">A weekly Apple recap with color, context, and just enough opinion.</div>
-  </div>
-</li>
-<li class="issue-card">
-  <div class="issue-date"><strong>22</strong><span>May 2026</span></div>
-  <div>
-    <a href="2026-05-22-this-week-in-apple-accessibility-takes-center-stage-as-wwdc-looms.html">This Week in Apple: Accessibility Takes Center Stage as WWDC Looms</a>
-    <div class="issue-meta">A weekly Apple recap with color, context, and just enough opinion.</div>
-  </div>
-</li>
-<li class="issue-card">
-  <div class="issue-date"><strong>15</strong><span>May 2026</span></div>
-  <div>
-    <a href="2026-05-15-this-week-in-apple-the-foldable-horizon-and-the-intel-twist.html">This Week in Apple: The Foldable Horizon and the Intel Twist</a>
-    <div class="issue-meta">A weekly Apple recap with color, context, and just enough opinion.</div>
-  </div>
-</li>
-<li class="issue-card">
-  <div class="issue-date"><strong>12</strong><span>May 2026</span></div>
-  <div>
-    <a href="2026-05-12-this-week-in-apple-the-encryption-gap-closes.html">This Week in Apple: The Encryption Gap Closes</a>
-    <div class="issue-meta">A weekly Apple recap with color, context, and just enough opinion.</div>
-  </div>
-</li>
-      </ul>
+    <main>
+        <p class="count">7 weeks</p>
+        <ul>
+            <li style="border-left: 5px solid #e74c3c;">
+            <span class="date">2026-06-12</span>
+            <a href="2026-06-12-this-week-in-apple-the-developer-experience-gets-an-ai-overhaul-xcode-27-new-frameworks-and-the-future-of-app-development.html">This Week in Apple: The Developer Experience Gets an AI Overhaul—Xcode 27, New Frameworks, and the Future of App Development</a>
+        </li>
+<li style="border-left: 5px solid #e67e22;">
+            <span class="date">2026-06-11</span>
+            <a href="2026-06-11-this-week-in-apple-the-post-wwdc-intelligence-era.html">This Week in Apple: The Post-WWDC Intelligence Era</a>
+        </li>
+<li style="border-left: 5px solid #f1c40f;">
+            <span class="date">2026-06-05</span>
+            <a href="2026-06-05-this-week-in-apple-the-final-countdown-to-wwdcwhat-we-know-and-what-were-guessing.html">This Week in Apple: The Final Countdown to WWDC—What We Know and What We're Guessing</a>
+        </li>
+<li style="border-left: 5px solid #2ecc71;">
+            <span class="date">2026-05-29</span>
+            <a href="2026-05-29-this-week-in-apple-the-calm-before-wwdcand-whats-coming.html">This Week in Apple: The Calm Before WWDC—And What's Coming</a>
+        </li>
+<li style="border-left: 5px solid #3498db;">
+            <span class="date">2026-05-22</span>
+            <a href="2026-05-22-this-week-in-apple-accessibility-takes-center-stage-as-wwdc-looms.html">This Week in Apple: Accessibility Takes Center Stage as WWDC Looms</a>
+        </li>
+<li style="border-left: 5px solid #9b59b6;">
+            <span class="date">2026-05-15</span>
+            <a href="2026-05-15-this-week-in-apple-the-foldable-horizon-and-the-intel-twist.html">This Week in Apple: The Foldable Horizon and the Intel Twist</a>
+        </li>
+<li style="border-left: 5px solid #e74c3c;">
+            <span class="date">2026-05-12</span>
+            <a href="2026-05-12-this-week-in-apple-the-encryption-gap-closes.html">This Week in Apple: The Encryption Gap Closes</a>
+        </li>
+
+        </ul>
     </main>
-    <footer class="site-footer">
-      <p>Made from a tiny constellation of HTML files. Subscribe via <a href="feed.xml">RSS</a>.</p>
+    <footer>
+        <p>&copy; 2026 This Week in Apple &middot; Powered by AI &amp; caffeine</p>
     </footer>
-  </div>
 </body>
 </html>

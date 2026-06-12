@@ -2,8 +2,6 @@ import os
 import re
 from datetime import datetime
 import email.utils
-import json
-import markdown
 
 def slugify(text):
     text = text.lower()
@@ -11,6 +9,231 @@ def slugify(text):
     text = re.sub(r'[\s_-]+', '-', text)
     text = re.sub(r'^-+|-+$', '', text)
     return text
+
+def update_post_page(post):
+    filename = post['filename']
+    with open(filename, 'r') as f:
+        content = f.read()
+
+    article_match = re.search(r'<article>(.*?)</article>', content, re.DOTALL)
+    article_content = article_match.group(1).strip() if article_match else ""
+
+    post_template = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{post['title']} - This Week in Apple</title>
+    <style>
+        * {{ margin: 0; padding: 0; box-sizing: border-box; }}
+
+        body {{
+            font-family: "Iowan Old Style", "Palatino Linotype", "Palatino", Georgia, "Times New Roman", serif;
+            line-height: 1.7;
+            color: #2c2c2c;
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem;
+            background: #fcf8f0;
+        }}
+
+        .rainbow-bar {{
+            height: 6px;
+            border-radius: 3px;
+            background: linear-gradient(90deg,
+                #e74c3c, #e67e22, #f1c40f, #2ecc71, #3498db, #9b59b6, #e74c3c);
+            background-size: 200% 100%;
+            margin-bottom: 2.5rem;
+            animation: shimmer 6s linear infinite;
+        }}
+
+        @keyframes shimmer {{
+            0% {{ background-position: 0% 50%; }}
+            100% {{ background-position: 200% 50%; }}
+        }}
+
+        .site-link {{
+            display: inline-block;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #bbb;
+            text-decoration: none;
+            margin-bottom: 0.75rem;
+            transition: color 0.15s ease;
+        }}
+
+        .site-link:hover {{
+            color: #e67e22;
+        }}
+
+        h1 {{
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #1a1a1a;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }}
+
+        .post-date {{
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+            font-size: 0.85rem;
+            color: #bbb;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin-bottom: 2.5rem;
+        }}
+
+        article {{
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.03);
+        }}
+
+        article h1, article h2, article h3 {{
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+            color: #1a1a1a;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }}
+
+        article h1 {{ font-size: 1.6rem; }}
+        article h2 {{ font-size: 1.3rem; }}
+        article h3 {{ font-size: 1.1rem; }}
+
+        article p {{
+            margin-bottom: 1.2rem;
+        }}
+
+        article p:first-child {{
+            font-size: 1.05rem;
+            color: #555;
+        }}
+
+        article a {{
+            color: #e67e22;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }}
+
+        article a:hover {{
+            color: #d35400;
+        }}
+
+        article ul, article ol {{
+            margin: 1rem 0 1.5rem 2rem;
+        }}
+
+        article li {{
+            margin-bottom: 0.5rem;
+        }}
+
+        article blockquote {{
+            border-left: 4px solid #e6ddd0;
+            margin: 1.5rem 0;
+            padding: 0.75rem 1.25rem;
+            color: #666;
+            font-style: italic;
+            background: #faf7f0;
+            border-radius: 0 8px 8px 0;
+        }}
+
+        article table {{
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+        }}
+
+        article th, article td {{
+            border: 1px solid #eee7dd;
+            padding: 10px 12px;
+            text-align: left;
+        }}
+
+        article th {{
+            background: #faf7f0;
+            font-weight: 600;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+        }}
+
+        article img {{
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }}
+
+        article strong {{
+            color: #1a1a1a;
+        }}
+
+        .post-footer {{
+            margin-top: 2rem;
+            text-align: center;
+        }}
+
+        .post-footer a {{
+            display: inline-block;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+            font-size: 0.9rem;
+            color: #bbb;
+            text-decoration: none;
+            padding: 0.5rem 1.25rem;
+            border: 1px solid #eee7dd;
+            border-radius: 20px;
+            transition: all 0.15s ease;
+        }}
+
+        .post-footer a:hover {{
+            color: #e67e22;
+            border-color: #e6ddd0;
+            background: #faf7f0;
+        }}
+
+        footer {{
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee7dd;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #ccc;
+        }}
+
+        @media (max-width: 600px) {{
+            body {{ padding: 1.5rem 1rem; }}
+            h1 {{ font-size: 1.6rem; }}
+            article {{ padding: 1.5rem; }}
+            article table {{ font-size: 0.8rem; }}
+            article th, article td {{ padding: 6px 8px; }}
+        }}
+    </style>
+</head>
+<body>
+    <div class="rainbow-bar"></div>
+    <a class="site-link" href="index.html">&larr; This Week in Apple</a>
+    <header>
+        <h1>{post['title']}</h1>
+        <p class="post-date">{post['date']}</p>
+    </header>
+    <article>
+        {article_content}
+    </article>
+    <p class="post-footer"><a href="index.html">Back to Archive</a></p>
+    <footer>
+        <p>&copy; 2026 This Week in Apple &middot; Powered by AI &amp; caffeine</p>
+    </footer>
+</body>
+</html>"""
+
+    with open(filename, 'w') as f:
+        f.write(post_template)
 
 def update_site():
     base_url = "https://derfbwh.github.io/apple-news-recap/"
@@ -22,7 +245,7 @@ def update_site():
         with open(filename, 'r') as f:
             content = f.read()
             title_match = re.search(r'<title>(.*?)</title>', content)
-            title = title_match.group(1).replace(" - This Week in Apple", "") if title_match else filename
+            title = title_match.group(1).replace(" - This Week in Apple", "").replace(" \u2014 This Week in Apple", "") if title_match else filename
             
             # Extract date from filename (YYYY-MM-DD-...)
             date_match = re.match(r'(\d{4}-\d{2}-\d{2})', filename)
@@ -38,6 +261,10 @@ def update_site():
                 'date': date_str,
                 'description': description
             })
+
+    # Rewrite each post page with new design
+    for post in posts:
+        update_post_page(post)
 
     # Update index.html
     items_html = ""
